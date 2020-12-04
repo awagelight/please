@@ -1164,6 +1164,7 @@ def _go_binary_cmds(static=False, ldflags='', pkg_config='', definitions=None, g
     _link_cmd = f'"$TOOLS_GO" tool link -importcfg importconfig -tmpdir "$TMP_DIR" -extld "$TOOLS_LD" -o "$OUT"'
 
     gen_import_cfg = _set_go_env() + ' && ' + _generate_pkg_import_cfg_cmd("goroot.importconfig", '"$GOROOT"')
+    gen_import_cfg += ' && ' + _generate_pkg_import_cfg_cmd("thirdparty.importconfig", '"$LIGHT_THIRDPATY"')
     gen_import_cfg += ' && ' + _aggregate_import_cfg_cmd()
 
     linkerdefs = []
